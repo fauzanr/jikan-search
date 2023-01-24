@@ -28,8 +28,10 @@ const AnimeDetail = () => {
             Title (2022)
           </Text>
           <Text font="18px" mb={2} style={{ color: "#b3b3b3" }}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque ea
-            quasi magnam
+            <em>
+              "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque
+              ea quasi magnam"
+            </em>
           </Text>
           <div className={cssStats}>
             <Rating locked count={1} value={1} type="warning" />

@@ -8,9 +8,9 @@ import {
   cssSearch,
 } from "@/styles/home";
 import { AnimeResponse } from "@/types";
-import { Pagination, Input, Loading } from "@geist-ui/core";
+import { Pagination, Input } from "@geist-ui/core";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import useSWR, { SWRConfig } from "swr";
 
 const LIST_LIMIT = 12;
@@ -24,13 +24,14 @@ const CardSkeleton = () => (
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch(`${GET_ANIMES}?limit=${LIST_LIMIT}&page=1`);
+  const url = `${GET_ANIMES}?limit=${LIST_LIMIT}&page=1`;
+  const res = await fetch(url);
   const animes = await res.json();
 
   return {
     props: {
       fallback: {
-        [`${GET_ANIMES}?limit=${LIST_LIMIT}&page=1`]: animes,
+        [url]: animes,
       },
       animes,
     },
@@ -38,12 +39,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const Home = () => {
+  const [query, setQuery] = useState("");
+  const searchRef = useRef<HTMLInputElement>(null);
   const [pagination, setPagination] = useState<{ page: number; total: number }>(
     { page: 1, total: 0 }
   );
 
   const { data: animes, isValidating } = useSWR<AnimeResponse>(
-    `${GET_ANIMES}?limit=${LIST_LIMIT}&page=${pagination.page}`,
+    `${GET_ANIMES}?limit=${LIST_LIMIT}&page=${pagination.page}&q=${query}`,
     {
       onSuccess(data) {
         setPagination({
@@ -54,31 +57,48 @@ const Home = () => {
     }
   );
 
+  const changeQuery = (value: string) => {
+    setPagination((prev) => ({ ...prev, page: 1 }));
+    setQuery(value);
+  };
+
+  const onFormSubmit = (e?: FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
+    changeQuery(searchRef.current?.value || "");
+  };
+
   return (
     <div className={cssContainer}>
       <div className={cssSearch}>
         <h1>Jikan App</h1>
-        <Input
-          scale={4 / 3}
-          width="100%"
-          clearable
-          placeholder="Search Anime..."
-        />
+        <form onSubmit={onFormSubmit}>
+          <Input
+            scale={4 / 3}
+            width="100%"
+            clearable
+            placeholder="Search Anime..."
+            ref={searchRef}
+            onClearClick={() => changeQuery("")}
+          />
+        </form>
       </div>
 
-      <h3 className={cssResultText}>All Anime</h3>
+      <h3 className={cssResultText}>
+        {query ? `Result for "${query}"` : "All Anime"}
+      </h3>
+
       {isValidating ? (
         <div className={cssGrid}>
           <CardSkeleton />
         </div>
-      ) : !animes ? (
-        "No Data"
-      ) : (
+      ) : animes?.data?.length ? (
         <div className={cssGrid}>
           {animes.data.map((anime) => (
             <Card key={anime.mal_id} anime={anime} />
           ))}
         </div>
+      ) : (
+        "No Data."
       )}
 
       <div className={cssCenter}>
