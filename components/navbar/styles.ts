@@ -14,7 +14,7 @@ export const cssContainer = css`
   align-items: center;
   justify-content: space-between;
   background: white;
-  width: var(--max-width);
+  max-width: var(--max-width);
   margin: 0 auto;
 `;
 

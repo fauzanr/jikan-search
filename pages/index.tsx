@@ -1,5 +1,6 @@
 import Card from "@/components/card";
-import { cssContainer, cssGrid } from "@/styles/home";
+import { cssContainer, cssGrid, cssPagination } from "@/styles/home";
+import { Pagination } from "@geist-ui/core";
 
 export default function Home() {
   return (
@@ -13,6 +14,9 @@ export default function Home() {
         <Card />
         <Card />
         <Card />
+      </div>
+      <div className={cssPagination}>
+        <Pagination limit={5} page={1} count={10} />
       </div>
     </div>
   );

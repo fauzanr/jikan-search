@@ -16,3 +16,9 @@ export const cssGrid = css`
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
 `;
+
+export const cssPagination = css`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
