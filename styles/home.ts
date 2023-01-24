@@ -5,6 +5,7 @@ export const cssContainer = css`
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 12px;
+  padding-bottom: 30px;
 `;
 
 export const cssSearch = css`
@@ -34,7 +35,7 @@ export const cssGrid = css`
   }
 `;
 
-export const cssPagination = css`
+export const cssCenter = css`
   display: flex;
   justify-content: center;
   margin-top: 20px;

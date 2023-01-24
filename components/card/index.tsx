@@ -1,29 +1,41 @@
+import { AnimeRecord } from "@/types";
 import { defaultBannerUrl } from "@/utils/const";
 import { Rating } from "@geist-ui/core";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { cssCard, cssDescription, cssImageContainer, cssStats } from "./styles";
+import Skeleton from "./skeleton";
+import {
+  cssCard,
+  cssDescription,
+  cssImageContainer,
+  cssStats,
+  cssTruncate,
+} from "./styles";
 
-const Card = () => {
+const Card = ({ anime }: { anime?: AnimeRecord }) => {
+  if (!anime) return <Skeleton />;
+
+  const imgUrl =
+    anime.images.webp.image_url ||
+    anime.images.jpg.image_url ||
+    defaultBannerUrl;
+
   return (
-    <Link href="/anime/1">
-      <div className={cssCard}>
-        <div className={cssImageContainer}>
-          <Image src={defaultBannerUrl} fill alt="banner" />
-        </div>
-        <div className={cssDescription}>
-          <h3>Title</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut,
-            perferendis? Nobis cupiditate fugit ea. Ratione quam, delectus
-            architecto vel blanditiis placeat nobis, maxime inventore non
-            perspiciatis nisi eligendi, nam reprehenderit?
-          </p>
-          <div className={cssStats}>
-            <Rating locked value={5} type="warning" style={{ minWidth: 0 }} />
-            <div style={{ whiteSpace: "nowrap" }}>10 EP</div>
-          </div>
+    <Link href="/anime/1" className={cssCard}>
+      <div className={cssImageContainer}>
+        <Image src={imgUrl} objectFit="cover" fill alt="banner" />
+      </div>
+      <div className={cssDescription}>
+        <h3 className={cssTruncate}>{anime.title}</h3>
+        <p className={cssTruncate}>
+          {anime.background || anime.synopsis || "-"}
+        </p>
+        <div className={cssStats}>
+          <Rating locked value={1} count={1} type="warning" />
+          <div>{anime.score || "-"}</div>
+          <span style={{ margin: "0 10px" }}>•</span>
+          <div style={{ whiteSpace: "nowrap" }}>{anime.episodes || "-"} EP</div>
         </div>
       </div>
     </Link>
