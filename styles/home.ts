@@ -1,3 +1,4 @@
+import { breakpoints } from "@/utils/const";
 import { css } from "@emotion/css";
 
 export const cssContainer = css`
@@ -28,7 +29,7 @@ export const cssGrid = css`
   gap: 1rem;
   margin: auto;
 
-  @media (min-width: 576px) {
+  @media (min-width: ${breakpoints.xs}) {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
 `;
