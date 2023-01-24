@@ -1,11 +1,28 @@
 import Card from "@/components/card";
-import { cssContainer, cssGrid, cssPagination } from "@/styles/home";
-import { Pagination } from "@geist-ui/core";
+import {
+  cssContainer,
+  cssGrid,
+  cssPagination,
+  cssResultText,
+  cssSearch,
+} from "@/styles/home";
+import { Pagination, Input } from "@geist-ui/core";
 
 export default function Home() {
   return (
     <div className={cssContainer}>
-      Home
+      <div className={cssSearch}>
+        <h1>Jikan App</h1>
+        <Input
+          scale={4 / 3}
+          width="100%"
+          clearable
+          placeholder="Search Anime..."
+        />
+      </div>
+
+      <h3 className={cssResultText}>All Anime</h3>
+
       <div className={cssGrid}>
         <Card />
         <Card />

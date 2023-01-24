@@ -3,7 +3,23 @@ import { css } from "@emotion/css";
 export const cssContainer = css`
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 16px 12px;
+  padding: 0 12px;
+`;
+
+export const cssSearch = css`
+  padding: 40px 0;
+  max-width: 700px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+`;
+
+export const cssResultText = css`
+  margin-bottom: 12px;
+  color: var(--txt-primary);
 `;
 
 export const cssGrid = css`
