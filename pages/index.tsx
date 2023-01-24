@@ -1,5 +1,19 @@
-import css from "@/styles/Home.module.css";
+import Card from "@/components/card";
+import { cssContainer, cssGrid } from "@/styles/home";
 
 export default function Home() {
-  return <div className={css.container}>Home</div>;
+  return (
+    <div className={cssContainer}>
+      Home
+      <div className={cssGrid}>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    </div>
+  );
 }
