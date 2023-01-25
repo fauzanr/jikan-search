@@ -22,7 +22,7 @@ const Card = ({ anime }: { anime?: AnimeRecord }) => {
     defaultBannerUrl;
 
   return (
-    <Link href="/anime/1" className={cssCard}>
+    <Link href={`/anime/${anime.mal_id}`} className={cssCard}>
       <div className={cssImageContainer}>
         <Image src={imgUrl} objectFit="cover" fill alt="banner" />
       </div>

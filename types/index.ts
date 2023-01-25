@@ -127,6 +127,38 @@ export interface AnimeRecord {
   ];
 }
 
+export interface AnimeRecordFull extends AnimeRecord {
+  relations: [
+    {
+      relation: string;
+      entry: [
+        {
+          mal_id: 0;
+          type: string;
+          name: string;
+          url: string;
+        }
+      ];
+    }
+  ];
+  theme: {
+    openings: string[];
+    endings: string[];
+  };
+  external: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+  streaming: [
+    {
+      name: string;
+      url: string;
+    }
+  ];
+}
+
 export interface Pagination {
   current_page: number;
   last_visible_page: number;
@@ -138,7 +170,11 @@ export interface Pagination {
   };
 }
 
-export interface AnimeResponse {
+export interface AnimesResponse {
   data: Array<AnimeRecord>;
   pagination: Pagination;
+}
+
+export interface AnimeResponse {
+  data: AnimeRecordFull;
 }

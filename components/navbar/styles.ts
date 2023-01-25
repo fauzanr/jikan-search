@@ -1,6 +1,7 @@
 import { css } from "@emotion/css";
 
 export const cssNavbar = css`
+  background-color: white;
   box-shadow: 0px 2px 8px 0px #00000040;
   height: var(--navbar-height);
 

@@ -7,7 +7,7 @@ import {
   cssResultText,
   cssSearch,
 } from "@/styles/home";
-import { AnimeResponse } from "@/types";
+import { AnimesResponse } from "@/types";
 import { Pagination, Input } from "@geist-ui/core";
 import { GetServerSideProps } from "next";
 import { FormEvent, useRef, useState } from "react";
@@ -24,16 +24,16 @@ const CardSkeleton = () => (
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const url = `${GET_ANIMES}?limit=${LIST_LIMIT}&page=1`;
+  const url = `${GET_ANIMES}?limit=${LIST_LIMIT}&page=1&q=`;
   const res = await fetch(url);
-  const animes = await res.json();
+  const animesRes: AnimesResponse = await res.json();
 
   return {
     props: {
       fallback: {
-        [url]: animes,
+        [url]: animesRes,
       },
-      animes,
+      animesRes,
     },
   };
 };
@@ -45,7 +45,7 @@ const Home = () => {
     { page: 1, total: 0 }
   );
 
-  const { data: animes, isValidating } = useSWR<AnimeResponse>(
+  const { data: animes, isValidating } = useSWR<AnimesResponse>(
     `${GET_ANIMES}?limit=${LIST_LIMIT}&page=${pagination.page}&q=${query}`,
     {
       onSuccess(data) {
