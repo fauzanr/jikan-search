@@ -15,7 +15,7 @@ export const cssContainer = css`
   align-items: center;
   justify-content: space-between;
   background: white;
-  max-width: var(--max-width);
+  max-width: 1100px;
   margin: 0 auto;
 `;
 
@@ -28,6 +28,7 @@ export const cssNavItems = css`
     align-items: center;
     padding: 0 12px;
     color: var(--txt-primary);
+    cursor: pointer;
 
     &:hover {
       color: var(--txt-black);
@@ -36,6 +37,9 @@ export const cssNavItems = css`
 `;
 
 export const cssTitle = css`
+  display: flex;
+  align-items: center;
+  height: var(--navbar-height);
   padding: 0 12px;
   font-weight: bold;
 `;

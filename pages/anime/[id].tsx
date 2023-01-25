@@ -48,9 +48,7 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div css={cssBanner}>
-        <Image src={defaultBannerUrl} fill objectFit="cover" alt="banner" />
-      </div>
+      <div css={cssBanner}></div>
       <div css={cssLayout}>
         <div>
           <div css={cssImageContainer}>

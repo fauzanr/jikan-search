@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { useSession, signOut } from "next-auth/react";
 import {
   cssContainer,
   cssMargin,
@@ -9,14 +10,20 @@ import {
 } from "./styles";
 
 const Navbar = () => {
+  const { data: session } = useSession();
+
   return (
     <>
       <div css={cssNavbar}>
         <div css={cssContainer}>
-          <div css={cssTitle}></div>
+          <div css={cssTitle}>Jikan App</div>
           <div css={cssNavItems}>
-            <Link href="/">Home</Link>
-            <Link href="/">Logout</Link>
+            {session && (
+              <>
+                <Link href="/">Home</Link>
+                <a onClick={() => signOut()}>Logout</a>
+              </>
+            )}
           </div>
         </div>
       </div>

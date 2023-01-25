@@ -5,6 +5,7 @@ export const cssBanner = css`
   position: relative;
   height: 180px;
   width: 100%;
+  background: #2f51a3;
 `;
 
 export const cssLayout = css`

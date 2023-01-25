@@ -61,13 +61,13 @@ const Home = () => {
       </Head>
       <div css={cssContainer}>
         <div css={cssSearch}>
-          <h1>Jikan App</h1>
+          <p>Search Anime</p>
           <form onSubmit={onFormSubmit}>
             <Input
               scale={4 / 3}
               width="100%"
               clearable
-              placeholder="Search Anime..."
+              placeholder="Type Here..."
               ref={searchRef}
               onClearClick={() => changeQuery("")}
             />

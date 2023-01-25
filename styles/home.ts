@@ -13,9 +13,14 @@ export const cssSearch = css`
   max-width: 700px;
   margin: 0 auto;
 
-  h1 {
+  p {
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+  }
+
+  form {
+    box-shadow: 0px 0px 20px -5px #00000040;
+    border-radius: 8px;
   }
 `;
 
