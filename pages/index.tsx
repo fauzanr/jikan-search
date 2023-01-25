@@ -9,9 +9,8 @@ import {
 } from "@/styles/home";
 import { AnimesResponse } from "@/types";
 import { Pagination, Input } from "@geist-ui/core";
-import { GetServerSideProps } from "next";
 import { FormEvent, useRef, useState } from "react";
-import useSWR, { SWRConfig } from "swr";
+import useSWR from "swr";
 
 const LIST_LIMIT = 12;
 
@@ -23,21 +22,6 @@ const CardSkeleton = () => (
   </>
 );
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const url = `${GET_ANIMES}?limit=${LIST_LIMIT}&page=1&q=`;
-  const res = await fetch(url);
-  const animesRes: AnimesResponse = await res.json();
-
-  return {
-    props: {
-      fallback: {
-        [url]: animesRes,
-      },
-      animesRes,
-    },
-  };
-};
-
 const Home = () => {
   const [query, setQuery] = useState("");
   const searchRef = useRef<HTMLInputElement>(null);
@@ -45,7 +29,7 @@ const Home = () => {
     { page: 1, total: 0 }
   );
 
-  const { data: animes, isValidating } = useSWR<AnimesResponse>(
+  const { data: animes, isLoading } = useSWR<AnimesResponse>(
     `${GET_ANIMES}?limit=${LIST_LIMIT}&page=${pagination.page}&q=${query}`,
     {
       onSuccess(data) {
@@ -87,7 +71,7 @@ const Home = () => {
         {query ? `Result for "${query}"` : "All Anime"}
       </h3>
 
-      {isValidating ? (
+      {isLoading ? (
         <div className={cssGrid}>
           <CardSkeleton />
         </div>
@@ -117,12 +101,4 @@ const Home = () => {
   );
 };
 
-const Page = ({ fallback }: { fallback: { [key: string]: any } }) => {
-  return (
-    <SWRConfig value={{ fallback }}>
-      <Home />
-    </SWRConfig>
-  );
-};
-
-export default Page;
+export default Home;
