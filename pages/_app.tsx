@@ -1,4 +1,3 @@
-import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Rubik } from "@next/font/google";
 import Navbar from "@/components/navbar";

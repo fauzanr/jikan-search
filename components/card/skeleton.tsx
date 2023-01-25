@@ -8,13 +8,13 @@ import {
 
 const Skeleton = () => {
   return (
-    <div className={cssCard}>
-      <div className={cssImageContainer}></div>
-      <div className={cssDescription}>
-        <div className={cssDivPlaceholder}></div>
-        <div className={cssDivPlaceholder}></div>
-        <div className={cssDivPlaceholder}></div>
-        <div className={cssDivPlaceholder}></div>
+    <div css={cssCard}>
+      <div css={cssImageContainer}></div>
+      <div css={cssDescription}>
+        <div css={cssDivPlaceholder}></div>
+        <div css={cssDivPlaceholder}></div>
+        <div css={cssDivPlaceholder}></div>
+        <div css={cssDivPlaceholder}></div>
       </div>
     </div>
   );

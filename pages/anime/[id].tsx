@@ -48,12 +48,12 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={cssBanner}>
+      <div css={cssBanner}>
         <Image src={defaultBannerUrl} fill objectFit="cover" alt="banner" />
       </div>
-      <div className={cssLayout}>
+      <div css={cssLayout}>
         <div>
-          <div className={cssImageContainer}>
+          <div css={cssImageContainer}>
             <span>
               <Image src={imgUrl} fill alt="banner" priority />
             </span>
@@ -67,7 +67,7 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
             {anime.background && <em>&quot;{anime.background}&quot;</em>}
           </Text>
 
-          <div className={cssStats}>
+          <div css={cssStats}>
             <Rating locked count={1} value={1} type="warning" />
             <Text mr={0.4}>{anime.score}</Text>
             <Text style={{ color: "#ccc" }}>
@@ -84,20 +84,20 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
             </Badge>
           ))}
 
-          <div className={cssDescTitle}>Synopis</div>
+          <div css={cssDescTitle}>Synopis</div>
           <Text>{anime.synopsis}</Text>
 
           {anime.episodes && (
             <>
-              <div className={cssDescTitle}>Episodes</div>
+              <div css={cssDescTitle}>Episodes</div>
               <Text>{anime.episodes}</Text>
             </>
           )}
 
-          <div className={cssDescTitle}>Total Runtime</div>
+          <div css={cssDescTitle}>Total Runtime</div>
           <Text>{anime.duration}</Text>
 
-          <div className={cssDescTitle}>Studio</div>
+          <div css={cssDescTitle}>Studio</div>
           {anime.studios.length
             ? anime.studios.map((studio, i) => (
                 <Text span key={studio.mal_id}>
@@ -107,7 +107,7 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
               ))
             : "-"}
 
-          <div className={cssDescTitle}>Producer</div>
+          <div css={cssDescTitle}>Producer</div>
           {anime.producers.length
             ? anime.producers.map((producer, i) => (
                 <Text span key={producer.mal_id}>

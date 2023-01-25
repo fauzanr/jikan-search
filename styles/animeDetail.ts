@@ -1,5 +1,5 @@
 import { breakpoints } from "@/utils/const";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 export const cssBanner = css`
   position: relative;

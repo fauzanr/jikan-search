@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@geist-ui/core": "^2.3.8",
     "@next/font": "13.1.5",

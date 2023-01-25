@@ -22,16 +22,14 @@ const Card = ({ anime }: { anime?: AnimeRecord }) => {
     defaultBannerUrl;
 
   return (
-    <Link href={`/anime/${anime.mal_id}`} className={cssCard}>
-      <div className={cssImageContainer}>
+    <Link href={`/anime/${anime.mal_id}`} css={cssCard}>
+      <div css={cssImageContainer}>
         <Image src={imgUrl} objectFit="cover" fill alt={anime.title} />
       </div>
-      <div className={cssDescription}>
-        <h3 className={cssTruncate}>{anime.title}</h3>
-        <p className={cssTruncate}>
-          {anime.background || anime.synopsis || "-"}
-        </p>
-        <div className={cssStats}>
+      <div css={cssDescription}>
+        <h3 css={cssTruncate}>{anime.title}</h3>
+        <p css={cssTruncate}>{anime.background || anime.synopsis || "-"}</p>
+        <div css={cssStats}>
           <Rating locked value={1} count={1} type="warning" />
           <div>{anime.score || "-"}</div>
           <span style={{ margin: "0 10px" }}>•</span>

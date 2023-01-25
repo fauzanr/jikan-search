@@ -11,16 +11,16 @@ import {
 const Navbar = () => {
   return (
     <>
-      <div className={cssNavbar}>
-        <div className={cssContainer}>
-          <div className={cssTitle}></div>
-          <div className={cssNavItems}>
+      <div css={cssNavbar}>
+        <div css={cssContainer}>
+          <div css={cssTitle}></div>
+          <div css={cssNavItems}>
             <Link href="/">Home</Link>
             <Link href="/">Logout</Link>
           </div>
         </div>
       </div>
-      <div className={cssMargin}></div>
+      <div css={cssMargin}></div>
     </>
   );
 };
