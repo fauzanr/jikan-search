@@ -18,22 +18,20 @@ export interface AnimeRecord {
     url: string;
     embed_url: string;
   };
-  approved: true;
-  titles: [
-    {
-      type: string;
-      title: string;
-    }
-  ];
+  approved: boolean;
+  titles: Array<{
+    type: string;
+    title: string;
+  }>;
   title: string;
   title_english: string;
   title_japanese: string;
-  title_synonyms: [string];
+  title_synonyms: Array<string>;
   type: string;
   source: string;
   episodes: number;
   status: string;
-  airing: true;
+  airing: boolean;
   aired: {
     from: string;
     to: string;
@@ -48,8 +46,8 @@ export interface AnimeRecord {
         month: number;
         year: number;
       };
-      string: string;
     };
+    string: string;
   };
   duration: string;
   rating: string;
@@ -69,94 +67,74 @@ export interface AnimeRecord {
     timezone: string;
     string: string;
   };
-  producers: [
-    {
-      mal_id: number;
-      type: string;
-      name: string;
-      url: string;
-    }
-  ];
-  licensors: [
-    {
-      mal_id: number;
-      type: string;
-      name: string;
-      url: string;
-    }
-  ];
-  studios: [
-    {
-      mal_id: number;
-      type: string;
-      name: string;
-      url: string;
-    }
-  ];
-  genres: [
-    {
-      mal_id: number;
-      type: string;
-      name: string;
-      url: string;
-    }
-  ];
-  explicit_genres: [
-    {
-      mal_id: number;
-      type: string;
-      name: string;
-      url: string;
-    }
-  ];
-  themes: [
-    {
-      mal_id: number;
-      type: string;
-      name: string;
-      url: string;
-    }
-  ];
-  demographics: [
-    {
-      mal_id: number;
-      type: string;
-      name: string;
-      url: string;
-    }
-  ];
+  producers: Array<{
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }>;
+  licensors: Array<{
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }>;
+  studios: Array<{
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }>;
+  genres: Array<{
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }>;
+  explicit_genres: Array<{
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }>;
+  themes: Array<{
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }>;
+  demographics: Array<{
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }>;
 }
 
 export interface AnimeRecordFull extends AnimeRecord {
-  relations: [
-    {
-      relation: string;
-      entry: [
-        {
-          mal_id: 0;
-          type: string;
-          name: string;
-          url: string;
-        }
-      ];
-    }
-  ];
+  relations: Array<{
+    relation: string;
+    entry: [
+      {
+        mal_id: number;
+        type: string;
+        name: string;
+        url: string;
+      }
+    ];
+  }>;
   theme: {
     openings: string[];
     endings: string[];
   };
-  external: [
-    {
-      name: string;
-      url: string;
-    }
-  ];
-  streaming: [
-    {
-      name: string;
-      url: string;
-    }
-  ];
+  external: Array<{
+    name: string;
+    url: string;
+  }>;
+  streaming: Array<{
+    name: string;
+    url: string;
+  }>;
 }
 
 export interface Pagination {

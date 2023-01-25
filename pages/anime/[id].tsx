@@ -10,7 +10,7 @@ import {
 } from "@/styles/animeDetail";
 import { defaultBannerUrl } from "@/utils/const";
 import { GetServerSideProps } from "next";
-import { GET_ANIME } from "@/endpoints";
+import { GET_ANIME } from "@/endpoints/index";
 import { AnimeRecordFull, AnimeResponse } from "@/types";
 import Link from "next/link";
 import Head from "next/head";

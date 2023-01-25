@@ -1,5 +1,5 @@
 import Card from "@/components/card";
-import { GET_ANIMES } from "@/endpoints";
+import { GET_ANIMES } from "@/endpoints/index";
 import {
   cssCenter,
   cssContainer,
@@ -64,6 +64,7 @@ const Home = () => {
           <p>Search Anime</p>
           <form onSubmit={onFormSubmit}>
             <Input
+              name="search"
               scale={4 / 3}
               width="100%"
               clearable
