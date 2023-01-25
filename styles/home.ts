@@ -2,7 +2,7 @@ import { breakpoints } from "@/utils/const";
 import { css } from "@emotion/css";
 
 export const cssContainer = css`
-  max-width: var(--max-width);
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 12px;
   padding-bottom: 30px;

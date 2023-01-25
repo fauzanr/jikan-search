@@ -8,7 +8,7 @@ export const cssBanner = css`
 `;
 
 export const cssLayout = css`
-  max-width: var(--max-width);
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 12px;
 

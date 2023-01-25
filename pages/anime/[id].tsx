@@ -11,8 +11,9 @@ import {
 import { defaultBannerUrl } from "@/utils/const";
 import { GetServerSideProps } from "next";
 import { GET_ANIME } from "@/endpoints";
-import { AnimeRecord, AnimeRecordFull, AnimeResponse } from "@/types";
+import { AnimeRecordFull, AnimeResponse } from "@/types";
 import Link from "next/link";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   // @ts-expect-error Property 'id' does not exist
@@ -41,6 +42,12 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
 
   return (
     <>
+      <Head>
+        <title>{anime.title}</title>
+        <meta name="description" content={anime.background || anime.synopsis} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div className={cssBanner}>
         <Image src={defaultBannerUrl} fill objectFit="cover" alt="banner" />
       </div>
@@ -57,7 +64,7 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
           </Text>
 
           <Text font="18px" mb={2} style={{ color: "#b3b3b3" }}>
-            {anime.background && <em>"{anime.background}"</em>}
+            {anime.background && <em>&quot;{anime.background}&quot;</em>}
           </Text>
 
           <div className={cssStats}>
@@ -120,7 +127,7 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
           {anime.streaming.length
             ? anime.streaming.map((stream) => (
                 <div key={stream.name + stream.url}>
-                  <a href={stream.url} target="_blank">
+                  <a href={stream.url} target="_blank" rel="noreferrer">
                     {stream.name}
                   </a>
                   <br />
@@ -135,7 +142,7 @@ const AnimeDetail = ({ anime }: { anime: AnimeRecordFull }) => {
                 {rel.relation}
               </Text>
               {rel.entry.map((ent) => (
-                <Link href={`/anime/${ent.mal_id}`}>
+                <Link key={ent.mal_id} href={`/anime/${ent.mal_id}`}>
                   {ent.name} <br /> <br />
                 </Link>
               ))}

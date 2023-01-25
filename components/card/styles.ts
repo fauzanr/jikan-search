@@ -30,6 +30,7 @@ export const cssDescription = css`
   flex-direction: column;
   gap: 12px;
   padding: 12px;
+  min-height: 155px;
 `;
 
 export const cssTruncate = css`

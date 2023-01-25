@@ -24,7 +24,7 @@ const Card = ({ anime }: { anime?: AnimeRecord }) => {
   return (
     <Link href={`/anime/${anime.mal_id}`} className={cssCard}>
       <div className={cssImageContainer}>
-        <Image src={imgUrl} objectFit="cover" fill alt="banner" />
+        <Image src={imgUrl} objectFit="cover" fill alt={anime.title} />
       </div>
       <div className={cssDescription}>
         <h3 className={cssTruncate}>{anime.title}</h3>

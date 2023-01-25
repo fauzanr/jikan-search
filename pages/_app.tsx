@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }: AppProps) {
         value={{
           revalidateOnFocus: false,
           revalidateOnReconnect: false,
-          dedupingInterval: 10000,
           fetcher: (resource, init) =>
             fetch(resource, init).then((res) => res.json()),
         }}
